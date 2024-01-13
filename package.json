@@ -1,0 +1,18 @@
+{
+  "name": "finalproject-terminalx",
+  "version": "1.0.0",
+  "description": "### In this project we will write a test plan, develop automation infrastructure, and implement all kinds of test. ### We will be testing the following site: Terminal X (https://www.terminalx.com/)",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.40.1",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.11.0"
+  }
+}

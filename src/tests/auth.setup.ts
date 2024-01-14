@@ -9,8 +9,8 @@ setup('authenticate', async ({ page }) => {
     const login=new Login(page);
     await login.openLoginPopup();
     await login.fullLoginProcess(config.email,config.password);
-    await page.waitForURL(config.baseUrl);
-    expect(login.validateLogin).toBeTruthy();
+    await page.waitForLoadState('networkidle');
+    expect(await login.validateLogin()).toBeTruthy();
     await page.context().storageState({ path: authFile });
 
 });

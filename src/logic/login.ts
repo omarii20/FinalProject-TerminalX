@@ -1,11 +1,12 @@
 import { Locator, Page } from "playwright";
-export class Login{
-    private page: Page;
+import { BasePage } from "../infra/base-page";
+export class Login extends BasePage{
     private connectionButton:Locator;
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         this.connectionButton=this.page.locator('//a[@href="/customer/account/login?r=%2Fcustomer%2Faccount"]');
+        this.initPage();
     }
     openLoginPopup=async () => {
         await this.connectionButton.click();

@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { addItemToCart } from '../logic/api/apiRequests';
-import { BrowserWrapper } from '../infra/browser-wrapper';
 
 test.describe('Add new item to the cart', () => {
 

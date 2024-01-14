@@ -13,11 +13,21 @@ export class BrowserWrapper {
         }
         return this.page
     }
+    
     async maximizeWindow() {
         if (this.page) {
             await this.page.setViewportSize({ width: 1920, height: 1080 });
         }
     }
+
+    async getCookies() {
+        if (this.page) {
+            const cookies = await this.page.context().cookies();
+            return cookies;
+        }
+        return [];
+    }
+
     async closeBrowser() {
         await this.browser?.close()
     }

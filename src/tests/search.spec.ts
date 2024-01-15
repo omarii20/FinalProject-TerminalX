@@ -26,8 +26,13 @@ test.describe("search about item verify results", () => {
   });
 
   test("Search about a brand and validate the result title text", async () => {
-    expect(
-      await searchpage.isResultTitleContainBrandName("ADIDAS")
-    ).toBeTruthy();
+    expect(await searchpage.isResultTitleContainBrandName("ADIDAS")).toBeTruthy();
+  });
+
+  test("Search about brand and sort from chipper to the epensive and validate sort", async () => {
+    await searchpage.choosePriceSortOption()
+    const finalPrices = await searchpage.getFinalPricesList()
+    const isSorted = searchpage.isSorted(finalPrices)
+    expect(isSorted).toBeTruthy()
   });
 });

@@ -7,7 +7,6 @@ test.describe('User info test',()=>{
         const apiRequest = new CustomerApi()
         const data = setUserInfoRequest("עביר")
         console.log(data);
-
         const response=await apiRequest.updateCustomeName(data)
         console.log(await response.json());
         expect(response.status()).toBe(200);

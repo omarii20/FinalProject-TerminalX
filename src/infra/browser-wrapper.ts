@@ -20,13 +20,13 @@ export class BrowserWrapper {
         }
     }
 
-    async getCookies() {
-        if (this.page) {
-            const cookies = await this.page.context().cookies();
-            return cookies;
-        }
-        return [];
-    }
+    // async getCookiesString() {
+    //     if (this.page) {
+    //         const cookiesArray = await this.page.context().cookies();
+    //         return cookiesArray.map(cookie => `${cookie.name}=${cookie.value}`).join(',')
+    //     }
+    //     return [];
+    // }
 
     async closeBrowser() {
         await this.browser?.close()

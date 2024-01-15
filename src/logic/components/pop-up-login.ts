@@ -1,7 +1,8 @@
 import { Locator, Page } from "playwright";
 import { BasePage } from "../../infra/base-page";
-export class LoginPopUp extends BasePage{
 
+export class LoginPopUp extends BasePage{
+    
     private emailInput:Locator;
     private passwordInput:Locator;
     private loginButton:Locator;
@@ -25,14 +26,10 @@ export class LoginPopUp extends BasePage{
         await this.loginButton.click();
     }
 
-    fullLoginProcess= async (email:string,password:string) => {
-        await this.fillEmail(email);
-        await this.fillPassword(password);
+    fullLoginProcess= async (emailInput:string,passwordInput:string) => {
+        await this.fillEmail(emailInput);
+        await this.fillPassword(passwordInput);
         await this.clickOnLoginButton();
     }
    
-    // async validateLogin(): Promise<boolean> {
-    //     const profileButton=this.page.locator('//button[@data-test-id="qa-header-profile-button"]')
-    //     return await profileButton.isVisible();
-    //   }
 }

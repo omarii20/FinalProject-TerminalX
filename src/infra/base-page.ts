@@ -7,6 +7,6 @@ export class BasePage {
         this.page = page;
     }
     async initPage(){
-        await this.page.waitForLoadState('networkidle')
+        await this.page.waitForLoadState('domcontentloaded')
     }
 } 

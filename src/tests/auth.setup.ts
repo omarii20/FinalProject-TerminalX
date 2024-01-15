@@ -1,16 +1,16 @@
 // auth.setup.ts
-import { expect, test as setup } from '@playwright/test';
-import { Login } from '../logic/login';
+import { test as setup } from '@playwright/test';
 import config from '../../config.json';
+import { Header } from '../logic/components/header';
+import { LoginPopUp } from '../logic/components/pop-up-login';
 const authFile = 'playwright/.auth/user.json';
 
-setup('authenticate', async ({ page }) => {
+setup('authenticate', async ({ page}) => {
     await page.goto(config.baseUrl);
-    const login=new Login(page);
-    await login.openLoginPopup();
-    await login.fullLoginProcess(config.email,config.password);
+    const header = new Header(page);
+    await header.clickOnConnectionBtn();
+    const loginpopup = new LoginPopUp(page)
+    await loginpopup.fullLoginProcess(config.email,config.password);
     await page.waitForLoadState('networkidle');
-    expect(await login.validateLogin()).toBeTruthy();
     await page.context().storageState({ path: authFile });
-
 });

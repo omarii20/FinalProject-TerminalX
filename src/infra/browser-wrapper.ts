@@ -28,7 +28,15 @@ export class BrowserWrapper {
     //     return [];
     // }
 
+    async getCurrentPage() {
+        if (!this.page) {
+            throw new Error('Browser is not launched yet.');
+        }
+        return this.page;
+    }
+
     async closeBrowser() {
         await this.browser?.close()
     }
+
 }

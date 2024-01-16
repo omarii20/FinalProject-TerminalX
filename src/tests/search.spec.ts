@@ -1,6 +1,6 @@
 import { test, expect, Page } from "playwright/test";
 import { BrowserWrapper } from "../infra/browser-wrapper";
-import config from "../../config.json";
+// import config from "../../config.json";
 import { SearchPage } from "../logic/search-page";
 import { HomePage } from "../logic/home-page";
 
@@ -14,9 +14,9 @@ test.describe("search about item verify results", () => {
   });
 
   test.beforeEach(async () => {
-    page = await browser.getPage(config.baseUrl);
+    page = await browser.getPage('https://www.terminalx.com/men');
     const homepage = new HomePage(page);
-    homepage.clicOnSearchHeaderBtn();
+    await homepage.clicOnSearchHeaderBtn();
     await homepage.fillSearchInputHeader("adidas");
     searchpage = new SearchPage(page);
   });
@@ -30,9 +30,9 @@ test.describe("search about item verify results", () => {
   });
 
   test("Search about brand and sort from chipper to the epensive and validate sort", async () => {
-    await searchpage.choosePriceSortOption()
-    const finalPrices = await searchpage.getFinalPricesList()
-    const isSorted = searchpage.isSorted(finalPrices)
-    expect(isSorted).toBeTruthy()
+    await searchpage.choosePriceSortOption('מחיר: מהנמוך לגבוה')
+    const prices = await searchpage.getFinalPricesList()
+    // console.log("Sorted Prices is:", prices)
+    expect(searchpage.isSorted(prices)).toBeTruthy()
   });
 });

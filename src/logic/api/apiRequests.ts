@@ -1,9 +1,17 @@
 import { apiPostMethod } from "../../infra/apiPostMethod";
-import { requestAddToCart } from "./requestBody/addItem-request";
+import { CartRequest } from "./requestBody/addItem-request";
 import { AddItemResponse } from "./resonseBody/addItem-response"
-import { requestsUrls } from "../../../apiUrls.json";
+import { requestUrls } from "../../../apiUrls.json";
 import { Response } from "./resonseBody/responseFromApi";
+import { LoginCredentials } from "../api/requestBody/login-request";
+import { LoginResponse } from "./resonseBody/login-response";
 
-export const addItemToCart = async (itemSku: string, quantity: number): Promise<Response<AddItemResponse>> => {
-    return await apiPostMethod(requestsUrls.addItemToCart, requestAddToCart(itemSku, quantity));
+export class ApiCall{
+    addItemToCart = async (data: CartRequest): Promise<Response<AddItemResponse>> => {
+        return await apiPostMethod(requestUrls.addItemToCart, data);
+    }
+    
+    loginApi = async (data: LoginCredentials): Promise<Response<LoginResponse>> => {
+        return await apiPostMethod(requestUrls.loginViaApi, data);
+    };
 }

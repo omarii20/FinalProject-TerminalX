@@ -1,6 +1,6 @@
 import { test, expect, Page } from "playwright/test";
 import { BrowserWrapper } from "../infra/browser-wrapper";
-// import config from "../../config.json";
+import config from "../../config.json";
 import { HomePage } from "../logic/home-page";
 
 test.describe("search about item verify results", () => {
@@ -13,14 +13,14 @@ test.describe("search about item verify results", () => {
   });
 
   test.beforeEach(async () => {
-    page = await browser.getPage('https://www.terminalx.com/men');
+    page = await browser.getPage(config.baseUrl);
     homepage = new HomePage(page);
   });
 
   const header = [
-    { name: "ON SALE", url: 'https://www.terminalx.com/on-sale' },
-    { name: "JUST LANDED", url: 'https://www.terminalx.com/justlanded' },
-    { name: "BRANDS", url: 'https://www.terminalx.com/brands' }
+    { name: "ON SALE", url: config.pagesURLs.on_sale_page },
+    { name: "JUST LANDED", url: config.pagesURLs.just_landed_page },
+    { name: "BRANDS", url: config.pagesURLs.BRANDS }
 ]
 for (const btn of header) {
     test(`Go to Home Page, Click on: ${btn.name}, Validate url`, async () => {

@@ -1,4 +1,3 @@
-import cookie from '../../../../playwright/.auth/user.json'
 
 export interface CartItem {
     data: {
@@ -7,7 +6,7 @@ export interface CartItem {
     };
 }
 
-interface CartRequest {
+export interface CartRequest {
     cart_items: CartItem[];
     skip_collect: number;
 }
@@ -25,13 +24,3 @@ export const buildCartItemRequest = (itemId: string, quantity: number): CartRequ
         skip_collect: 1,
     };
 };
-
-export const requestAddToCart = (itemId: string, quantity: number) => {
-    return {
-        data: buildCartItemRequest(itemId, quantity),
-        headers: {
-            "Content-Type": "application/json",
-            "Cookie":`${cookie.cookies.slice(2).map(cookie=>`${cookie.name}=${cookie.value}`).join(';')}`
-        }
-    }
-}

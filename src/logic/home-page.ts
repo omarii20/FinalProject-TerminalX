@@ -41,4 +41,16 @@ export class HomePage extends BasePage {
   async fullLoginProcess(emailInput: string, passwordInput: string) {
     await this.popuplogin.fullLoginProcess(emailInput, passwordInput);
   }
+  clickOnOnSaleBtnFromHeader = async () => {
+    await this.header.clickOnOnSaleBtn()
+  };
+
+  clickOnJustLandedFromHeader = async () => {
+    await this.header.clickOnJustLanded()
+  };
+
+  clickOnMutagimFromHeader = async () => {
+    await this.header.clickOnMutagim()
+  };
+   
 }

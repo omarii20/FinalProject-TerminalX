@@ -16,7 +16,7 @@ test.describe("search about item verify results", () => {
   test.beforeEach(async () => {
     page = await browser.getPage(config.baseUrl);
     const homepage = new HomePage(page);
-    homepage.clicOnSearchHeaderBtn();
+    await homepage.clicOnSearchHeaderBtn();
     await homepage.fillSearchInputHeader("adidas");
     searchpage = new SearchPage(page);
   });

@@ -1,13 +1,16 @@
 // auth.setup.ts
 import { test as setup } from '@playwright/test';
+import { ApiCall } from '../logic/api/apiRequests';
 import config from '../../config.json';
-import { HomePage } from '../logic/home-page';
+import { BuildLoginRequest } from '../logic/api/requestBody/login-request';
+
 const authFile = 'playwright/.auth/user.json';
 
-setup('authenticate', async ({ page}) => {
+setup('authenticate', async ({ page }) => {
     await page.goto(config.baseUrl);
-    const homepage = new HomePage(page)
-    await homepage.clicOnConnectionHeaderBtn()
-    await homepage.fullLoginProcess(config.email,config.password)
+    const data = BuildLoginRequest(config.email, config.password);
+    const apiCallls = new ApiCall()
+    const result = await apiCallls.loginApi(data)
+    console.log(result)
     await page.context().storageState({ path: authFile });
 });

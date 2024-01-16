@@ -6,6 +6,8 @@ import { Response } from "./resonseBody/responseFromApi";
 import { LoginCredentials } from "../api/requestBody/login-request";
 import { LoginResponse } from "./resonseBody/login-response";
 import { APIRequestContext } from "playwright";
+import { WishListItem } from "./requestBody/add-to-wishlist";
+import { AddProductsToWishlistResponse } from "./resonseBody/addItemToWishlist-response";
 
 export class ApiCall{
     addItemToCart = async (data: CartRequest): Promise<Response<AddItemResponse>> => {
@@ -15,4 +17,9 @@ export class ApiCall{
     loginApi = async (data: LoginCredentials, request: APIRequestContext): Promise<Response<LoginResponse>> => {
         return await apiPostMethod(requestUrls.loginViaApi, data, request);
     };
+
+    addItemToWishlist=async (data:WishListItem):Promise<Response<AddProductsToWishlistResponse>> =>{
+        return await apiPostMethod(requestUrls.addItemToWishlist,data);
+    
+    }
 }

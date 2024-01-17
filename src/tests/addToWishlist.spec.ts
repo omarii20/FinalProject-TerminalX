@@ -3,8 +3,8 @@ import { ApiCall } from '../logic/api/apiRequests';
 import { setWishListItem } from '../logic/api/requestBody/add-to-wishlist-request';
 import config from '../../config.json';
 import { BrowserWrapper } from '../infra/browser-wrapper';
-import { WishlistResponse, WishlistItem } from '../logic/api/resonseBody/wishlist-response';
-import { Response } from "../logic/api/resonseBody/responseFromApi";
+import { WishlistResponse, WishlistItem } from '../logic/api/responseBody/wishlist-response';
+import { Response } from "../logic/api/responseBody/responseFromApi";
 import { setWishListRemovedItem } from '../logic/api/requestBody/remove-from-wishlist-request';
 import { Wishlist } from '../logic/wishlist-page';
 
@@ -13,7 +13,7 @@ test.describe('Add new item to the wishlist', () => {
     let apiCalls:ApiCall;
     let items:WishlistItem;
 
-test('Add item to wishlist @wishlist', async () => {
+test('Add item to wishlist', async () => {
     const data= setWishListItem(["W139512901"],["93"],["19554"]);
     apiCalls = new ApiCall();
     addProductsToWishlistResponse = await apiCalls.addItemToWishlist(data);

@@ -6,7 +6,8 @@
         "BRANDS_URL": "https://www.terminalx.com/brands",
         "jUST_LANDED_URL":"https://www.terminalx.com/justlanded",
         "ON_SALE_URL":"https://www.terminalx.com/on-sale",   
-        "wishListUrl":"https://www.terminalx.com/wishlist/items"
+        "wishListUrl":"https://www.terminalx.com/wishlist/items",
+        "addressPage":"https://www.terminalx.com/customer/address/?limit=10"
     }
 
 }

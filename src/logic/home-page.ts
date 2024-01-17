@@ -15,7 +15,6 @@ export class HomePage extends BasePage {
     this.header = new Header(page);
     this.popuplogin = new LoginPopUp(page);
     this.popupListItems = new PopUpCartList(page);
-    this.initPage()
   }
 
   async clickOnCartHeaderBtn() {
@@ -24,6 +23,10 @@ export class HomePage extends BasePage {
 
   async validateItemIsAdded(): Promise<number> {
     return await this.popupListItems.validateItemInList();
+  }
+
+  async checkOutListEmpty(): Promise<string> {
+    return await this.popupListItems.checkoutCart();
   }
 
   async clicOnSearchHeaderBtn() {

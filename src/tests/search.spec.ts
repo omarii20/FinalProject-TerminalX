@@ -4,7 +4,6 @@ import { SearchPage } from "../logic/search-page"
 import { HomePage } from "../logic/home-page"
 import config from "../../config.json"
 
-
 test.describe("Search about specific brand and verify results", () => {
   let page: Page
   let browser: BrowserWrapper
@@ -21,10 +20,11 @@ test.describe("Search about specific brand and verify results", () => {
     await homepage.fillSearchInputHeader("adidas")
     searchpage = new SearchPage(page)
   });
+
   test("Search about a brand and sort the result from chipper to the expensive and validate the sort", async () => {
     await searchpage.choosePriceSortOption('מחיר: מהנמוך לגבוה')
+    await page.waitForLoadState('networkidle')
     const prices = await searchpage.getFinalPricesList()
-    console.log("Sorted Prices is:", prices)
     expect(searchpage.isSorted(prices)).toBeTruthy()
   });
 

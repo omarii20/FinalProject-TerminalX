@@ -17,7 +17,7 @@ test.describe('Cart functionallity tests', () => {
     });
 
     test.beforeEach(async () => {
-        page = await browser.getPage(config.baseUrl);
+        page = await browser.getPage(config.Pages_url.BASE_URL);
         homepage = new HomePage(page);
     });
 

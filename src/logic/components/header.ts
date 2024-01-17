@@ -3,18 +3,17 @@ import { BaseComponent } from "./base-component"
 
 export class Header extends BaseComponent {
 
-  private connectionButton: Locator;
+  private profileUserBtn: Locator;
   private searchBtn: Locator;
   private searchInput: Locator;
   private onSaleBtn: Locator;
   private justLanded: Locator;
   private mutagim: Locator;
   private cartButton: Locator;
-  private itemCartLocator: Locator;
+  private loginButton: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.loginButton = this.page.locator('a[data-test-id="qa-header-login-button"]')
     this.searchBtn = page.locator('[data-test-id="qa-header-search-button"]')
     this.searchInput = page.locator('[data-test-id="qa-search-box-input"]')
     this.onSaleBtn = page.locator('//a[text()="ON SALE"]')
@@ -22,7 +21,7 @@ export class Header extends BaseComponent {
     this.mutagim = page.locator('//a[text()="מותגים"]')
     this.cartButton = page.locator('//div[@class="cart-and-wishlist_3PHw"]/a[contains(@href,"/checkout/cart")]')
     this.profileUserBtn = page.locator('[data-test-id="qa-header-profile-button"]')
-    this.itemCartLocator = this.page.locator('//a[contains(text(), "סל קניות")]');
+    this.loginButton = this.page.locator('a[data-test-id="qa-header-login-button"]')
     this.initPage();
   }
 

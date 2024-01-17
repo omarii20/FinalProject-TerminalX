@@ -10,12 +10,9 @@ export class HomePage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.header = new Header(page);
-    this.popuplogin = new LoginPopUp(page);
-  }
-
-  async clicOnConnectionHeaderBtn() {
-    await this.header.clickOnConnectionBtn();
+    this.header = new Header(page)
+    this.popuplogin = new LoginPopUp(page)
+    this.initPage()
   }
 
   async clicOnSearchHeaderBtn() {
@@ -26,31 +23,28 @@ export class HomePage extends BasePage {
     await this.header.fillInSearchItem(searchItem);
   }
 
-  async fillPopUpLoginEmail(input: string) {
-    await this.popuplogin.fillEmail(input);
-  }
-
-  async fillPopUpLoginPassword(input: string) {
-    await this.popuplogin.fillPassword(input);
-  }
-
   async clickPopUpLoginBtn() {
     await this.popuplogin.clickOnLoginButton();
   }
 
-  async fullLoginProcess(emailInput: string, passwordInput: string) {
-    await this.popuplogin.fullLoginProcess(emailInput, passwordInput);
-  }
-  clickOnOnSaleBtnFromHeader = async () => {
+  async clickOnOnSaleBtnFromHeader () {
     await this.header.clickOnOnSaleBtn()
   };
 
-  clickOnJustLandedFromHeader = async () => {
+  async clickOnJustLandedFromHeader () {
     await this.header.clickOnJustLanded()
   };
 
-  clickOnMutagimFromHeader = async () => {
+  async clickOnMutagimFromHeader () {
     await this.header.clickOnMutagim()
-  };
-   
+  }
+
+  async clickOnProfileUserBtnFromHeader () {
+    await this.header.clickOnProfileUserBtn()
+  }
+
+  async getLoginButtonTextFromHeader(): Promise<string> {
+    return this.header.getLoginButtonText();
+}
+
 }

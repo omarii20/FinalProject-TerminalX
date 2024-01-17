@@ -1,38 +1,39 @@
-import { test, expect, Page } from "playwright/test";
-import { BrowserWrapper } from "../infra/browser-wrapper";
-// import config from "../../config.json";
-import { SearchPage } from "../logic/search-page";
-import { HomePage } from "../logic/home-page";
+import { test, expect, Page } from "playwright/test"
+import { BrowserWrapper } from "../infra/browser-wrapper"
+import { SearchPage } from "../logic/search-page"
+import { HomePage } from "../logic/home-page"
+import config from "../../config.json"
 
-test.describe("search about item verify results", () => {
-  let page: Page;
-  let browser: BrowserWrapper;
-  let searchpage: SearchPage;
+
+test.describe("Search about specific brand and verify results", () => {
+  let page: Page
+  let browser: BrowserWrapper
+  let searchpage: SearchPage
 
   test.beforeAll(async () => {
-    browser = new BrowserWrapper();
+    browser = new BrowserWrapper()
   });
 
   test.beforeEach(async () => {
-    page = await browser.getPage('https://www.terminalx.com/men');
-    const homepage = new HomePage(page);
-    await homepage.clicOnSearchHeaderBtn();
-    await homepage.fillSearchInputHeader("adidas");
-    searchpage = new SearchPage(page);
+    page = await browser.getPage(config.Pages_url.BASE_URL)
+    const homepage = new HomePage(page)
+    await homepage.clicOnSearchHeaderBtn()
+    await homepage.fillSearchInputHeader("adidas")
+    searchpage = new SearchPage(page)
+  });
+  test("Search about a brand and sort the result from chipper to the expensive and validate the sort", async () => {
+    await searchpage.choosePriceSortOption('מחיר: מהנמוך לגבוה')
+    const prices = await searchpage.getFinalPricesList()
+    console.log("Sorted Prices is:", prices)
+    expect(searchpage.isSorted(prices)).toBeTruthy()
   });
 
-  test("Search about a brand and validate items brand", async () => {
-    expect(await searchpage.getRandomItemBrand()).toContain("ADIDAS");
+  test("Search about a brand and validate item brand name by pickking a random item from the search result", async () => {
+    expect(await searchpage.getRandomItemBrand()).toContain("ADIDAS")
   });
 
   test("Search about a brand and validate the result title text", async () => {
-    expect(await searchpage.isResultTitleContainBrandName("ADIDAS")).toBeTruthy();
+    expect(await searchpage.isResultTitleContainBrandName("ADIDAS")).toBeTruthy()
   });
 
-  test("Search about brand and sort from chipper to the epensive and validate sort", async () => {
-    await searchpage.choosePriceSortOption('מחיר: מהנמוך לגבוה')
-    const prices = await searchpage.getFinalPricesList()
-    // console.log("Sorted Prices is:", prices)
-    expect(searchpage.isSorted(prices)).toBeTruthy()
-  });
 });

@@ -15,6 +15,7 @@ export class HomePage extends BasePage {
     this.header = new Header(page);
     this.popuplogin = new LoginPopUp(page);
     this.popupListItems = new PopUpCartList(page);
+    this.initPage()
   }
 
   async clickOnCartHeaderBtn() {
@@ -25,10 +26,6 @@ export class HomePage extends BasePage {
     return await this.popupListItems.validateItemInList();
   }
 
-  async clicOnConnectionHeaderBtn() {
-    await this.header.clickOnConnectionBtn();
-  }
-  
   async clicOnSearchHeaderBtn() {
     await this.header.clickOnSearchIcon();
   }
@@ -37,31 +34,28 @@ export class HomePage extends BasePage {
     await this.header.fillInSearchItem(searchItem);
   }
 
-  async fillPopUpLoginEmail(input: string) {
-    await this.popuplogin.fillEmail(input);
-  }
-
-  async fillPopUpLoginPassword(input: string) {
-    await this.popuplogin.fillPassword(input);
-  }
-
   async clickPopUpLoginBtn() {
     await this.popuplogin.clickOnLoginButton();
   }
 
-  async fullLoginProcess(emailInput: string, passwordInput: string) {
-    await this.popuplogin.fullLoginProcess(emailInput, passwordInput);
-  }
-  clickOnOnSaleBtnFromHeader = async () => {
+  async clickOnOnSaleBtnFromHeader () {
     await this.header.clickOnOnSaleBtn()
   };
 
-  clickOnJustLandedFromHeader = async () => {
+  async clickOnJustLandedFromHeader () {
     await this.header.clickOnJustLanded()
   };
 
-  clickOnMutagimFromHeader = async () => {
+  async clickOnMutagimFromHeader () {
     await this.header.clickOnMutagim()
-  };
-   
+  }
+
+  async clickOnProfileUserBtnFromHeader () {
+    await this.header.clickOnProfileUserBtn()
+  }
+
+  async getLoginButtonTextFromHeader(): Promise<string> {
+    return this.header.getLoginButtonText();
+}
+
 }

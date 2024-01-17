@@ -1,11 +1,7 @@
 {
-    "Email": "mohamedomarii443011994@gmail.com",
-    "Password": "M7md#omari",
-    "Pages_url": {
         "BASE_URL":"https://www.terminalx.com/",
         "BRANDS_URL": "https://www.terminalx.com/brands",
         "jUST_LANDED_URL":"https://www.terminalx.com/justlanded",
         "ON_SALE_URL":"https://www.terminalx.com/on-sale"
-    }
 
 }

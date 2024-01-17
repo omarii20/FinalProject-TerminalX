@@ -8,8 +8,9 @@ export class BrowserWrapper {
         this.browser = await chromium.launch();
         const context = await this.browser.newContext();
         this.page = await context.newPage();
+        
         if (url) {
-            await this.page.goto(url,{waitUntil:"networkidle"});
+            await this.page.goto(url,{waitUntil:'load'});
         }
         return this.page
     }

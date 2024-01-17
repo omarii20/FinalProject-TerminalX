@@ -21,7 +21,7 @@ test.describe("search about item verify results", () => {
     { name: "ON SALE", url: config.pagesURLs.on_sale_page },
     { name: "JUST LANDED", url: config.pagesURLs.just_landed_page },
     { name: "BRANDS", url: config.pagesURLs.BRANDS }
-]
+  ]
 for (const btn of header) {
     test(`Go to Home Page, Click on: ${btn.name}, Validate url`, async () => {
         switch (btn.name) {

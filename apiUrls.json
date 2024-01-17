@@ -2,6 +2,7 @@
     "requestUrls": {
         "addItemToCart": "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart?v=t4MeNg4Nhm8cTtfc8ZbCpP00Dzo%3D",
         "deleteItemFromCart":"https://www.terminalx.com/pg/MutationRemoveItemFromAnyCart?v=wj1SQTLJ2rlXfTskhC3yArhKE9k%3D",
-        "loginViaApi":"https://www.terminalx.com/pg/MutationUserLogin?v=I9dIkXxqUgEmvaClIy6g3%2FMlpMA%3D"
+        "loginViaApi":"https://www.terminalx.com/pg/MutationUserLogin?v=I9dIkXxqUgEmvaClIy6g3%2FMlpMA%3D",
+        "getUserInfo":"https://www.terminalx.com/pg/QueryCurrentUserInfo?v=Vy487KOB%2FsDB%2F0cFkmdYWkLOsB8%3D"
     }
 }

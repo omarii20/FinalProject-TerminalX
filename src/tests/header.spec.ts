@@ -18,10 +18,11 @@ test.describe("Navigate to some categories from the header buttons and validate 
   });
 
   const header = [
-    { name: "ON SALE", url: config.Pages_url.ON_SALE_URL },
-    { name: "JUST LANDED", url: config.Pages_url.jUST_LANDED_URL },
-    { name: "BRANDS", url: config.Pages_url.BRANDS_URL },
-  ];
+    { name: "ON SALE", url: config.pagesURLs.on_sale_page },
+    { name: "JUST LANDED", url: config.pagesURLs.just_landed_page },
+    { name: "BRANDS", url: config.pagesURLs.BRANDS }
+  ]
+
   for (const btn of header) {
     test(`Go to Home Page, Click on: ${btn.name}, Validate url`, async () => {
       switch (btn.name) {

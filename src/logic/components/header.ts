@@ -2,15 +2,15 @@ import { Locator, Page } from "playwright"
 import { BaseComponent } from "./base-component"
 
 export class Header extends BaseComponent {
-  
-  private loginButton: Locator
-  private searchBtn: Locator
-  private searchInput: Locator
-  private onSaleBtn: Locator
-  private justLanded: Locator
-  private mutagim: Locator
-  private profileUserBtn: Locator
 
+  private connectionButton: Locator;
+  private searchBtn: Locator;
+  private searchInput: Locator;
+  private onSaleBtn: Locator;
+  private justLanded: Locator;
+  private mutagim: Locator;
+  private cartButton: Locator;
+  private itemCartLocator: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -20,13 +20,24 @@ export class Header extends BaseComponent {
     this.onSaleBtn = page.locator('//a[text()="ON SALE"]')
     this.justLanded = page.locator('//a[text()="JUST LANDED"]')
     this.mutagim = page.locator('//a[text()="מותגים"]')
+    this.cartButton = page.locator('//div[@class="cart-and-wishlist_3PHw"]/a[contains(@href,"/checkout/cart")]')
     this.profileUserBtn = page.locator('[data-test-id="qa-header-profile-button"]')
-    this.initPage()
+    this.itemCartLocator = this.page.locator('//a[contains(text(), "סל קניות")]');
+    this.initPage();
   }
 
-  async clickOnOnSaleBtn () {
-    await this.onSaleBtn.click()
-  }
+  clickOnCartListBtn = async () => {
+    await this.cartButton.click();
+    const minicartDivLocator = this.page.locator('//div[@class="minicart-wrapper_oequ"]');
+    await minicartDivLocator.waitFor({ state: 'visible' });
+    const cartButtonLocator = this.page.locator('//a[contains(text(), "סל קניות")]');
+    await cartButtonLocator.waitFor({ state: 'visible' });
+    await cartButtonLocator.click();
+  };
+
+  clickOnOnSaleBtn = async () => {
+    await this.onSaleBtn.click();
+  };
 
   async clickOnJustLanded () {
     await this.justLanded.click()

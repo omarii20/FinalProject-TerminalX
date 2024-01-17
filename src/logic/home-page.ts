@@ -56,6 +56,6 @@ export class HomePage extends BasePage {
 
   async getLoginButtonTextFromHeader(): Promise<string> {
     return this.header.getLoginButtonText();
-}
+  }
 
 }

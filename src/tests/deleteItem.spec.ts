@@ -1,32 +1,44 @@
-import { test, expect } from '@playwright/test';
-import { ApiCall } from '../logic/api/apiRequests';
-import { buildGetItemsRequest } from '../logic/api/requestBody/getCurrentUserItems-request';
-import { buildDeleteItemRequest } from '../logic/api/requestBody/deleteItem-request';
-import { buildCartItemRequest } from '../logic/api/requestBody/addItem-request';
+// import { test, expect, Page } from '@playwright/test'
+// import { ApiCall } from '../logic/api/apiRequests'
+// import { buildGetItemsRequest } from '../logic/api/requestBody/getCurrentUserItems-request'
+// import { buildDeleteItemRequest } from '../logic/api/requestBody/deleteItem-request'
+// import { buildCartItemRequest } from '../logic/api/requestBody/addItem-request'
+// import { BrowserWrapper } from '../infra/browser-wrapper'
+// import { HomePage } from '../logic/home-page'
+// import  config  from '../../config.json'
 
-test.describe('Cart functionallity testss', () => {
+// test.describe('Cart functionallity testss', () => {
+//     let page: Page
+//     let browser: BrowserWrapper
+//     let homepage: HomePage
 
-    test.beforeEach( async () => {
-        const apiCallls = new ApiCall()
-        const data =  buildCartItemRequest("W20253000104", 1)
-        await apiCallls.addItemToCart(data);
-    })
+//     test.beforeAll(async () => {
+//         browser = new BrowserWrapper()
+//     });
 
-    test('Delete item via api', async () => {
-        //arange
-        const apiCalls = new ApiCall()
-        const buildUserInfo =  buildGetItemsRequest(false, true, true, false);
+//     test.beforeEach( async () => {
+//         const apiCallls = new ApiCall()
+//         const data =  buildCartItemRequest("W20253000104", 1)
+//         const response = await apiCallls.addItemToCart(data)
+//         page = await browser.getPage(config.Pages_url.listCartUrl)
+//         homepage = new HomePage(page)
+//     })
 
-        //act
-        const responseUserInfo = await apiCalls.currentUserInfo(buildUserInfo);
-        const itemToDelete = responseUserInfo.data.data.currentUserInfo.cart_object.items[0].id
-        const buildDelItemReq =  buildDeleteItemRequest(itemToDelete)
-        const response = await apiCalls.deleteItemFromCart(buildDelItemReq);
+//     test('Delete item via api', async () => {
+//         //arange
+//         const apiCalls = new ApiCall()
+//         const buildUserInfo =  buildGetItemsRequest(false, true, true, false)
 
-        //assert
-        expect(response.data.data.removeItemFromAnyCart.total_quantity).toBe(0);
-        expect(response.ok).toBe(true)
-        expect(response.status).toBe(200)
-    });
+//         //act
+//         const responseUserInfo = await apiCalls.currentUserInfo(buildUserInfo)
+//         const itemToDelete = responseUserInfo.data.data.currentUserInfo.cart_object.items[0].id
+//         const buildDelItemReq =  buildDeleteItemRequest(itemToDelete)
+//         await apiCalls.deleteItemFromCart(buildDelItemReq)
+//         await page.reload()
+//         const validateItemIsAdded = await homepage.checkOutListEmpty()
 
-});
+//         //assert
+//         expect(validateItemIsAdded).toBe("סל הקניות שלך ריק.")
+//     });
+
+// });

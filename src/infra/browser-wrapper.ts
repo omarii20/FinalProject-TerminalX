@@ -12,6 +12,8 @@ export class BrowserWrapper {
         if (url) {
             await this.page.goto(url,{waitUntil:'load'});
         }
+        
+        this.maximizeWindow();
         return this.page
     }
     
@@ -20,14 +22,6 @@ export class BrowserWrapper {
             await this.page.setViewportSize({ width: 1920, height: 1080 });
         }
     }
-
-    // async getCookiesString() {
-    //     if (this.page) {
-    //         const cookiesArray = await this.page.context().cookies();
-    //         return cookiesArray.map(cookie => `${cookie.name}=${cookie.value}`).join(',')
-    //     }
-    //     return [];
-    // }
 
     async getCurrentPage() {
         if (!this.page) {

@@ -7,11 +7,12 @@ interface Product {
     visibility: string;
     status: string;
     early_cutoff: number;
-    icon_stampa: unknown; 
     justlanded: string;
+    image:Image;
+    defaultColorValueIndex:string;
 }
 
-interface WishlistItem {
+export interface WishlistItem {
     id: number;
     product: Product;
 }
@@ -20,8 +21,13 @@ interface Wishlist {
     items_count: number;
     items: WishlistItem[];
 }
+interface Image{
+    disabled:boolean,
+    label:string,
+    url:string
+}
 
-export interface AddProductsToWishlistResponse {
+export interface WishlistResponse {
     data: {
         addProductsToWishlist: {
             changed: number;

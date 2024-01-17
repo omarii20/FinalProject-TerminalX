@@ -1,4 +1,3 @@
-import { apiPostMethod } from "../../../infra/apiPostMethod";
 
 
 export interface WishListItem {

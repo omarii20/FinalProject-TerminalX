@@ -34,11 +34,15 @@ test.describe('Cart functionallity tests', () => {
         //Arange
         const apiCallls = new ApiCall()
         const data =  buildCartItemRequest("W20253000104", 1)
+        
         //Act
         await apiCallls.addItemToCart(data)
+        await page.reload()
+        await page.waitForLoadState('networkidle')
         await homepage.clickOnCartHeaderBtn()
+
         //Assert
-        expect(await homepage.validateItemIsAdded()).toBeGreaterThan(0);
+        expect(await homepage.getItemCountFromCheckoutList()).toBeGreaterThan(0);
     });
 
     test.afterEach(async()=>{

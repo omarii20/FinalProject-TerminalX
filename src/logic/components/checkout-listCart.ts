@@ -1,6 +1,5 @@
 import { Locator, Page } from "playwright";
 import { BasePage } from "../../infra/base-page";
-import { BaseComponent } from "./base-component";
 
 export class CheckOutCartList extends BasePage{
     private cartList: Locator;

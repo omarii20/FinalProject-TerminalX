@@ -16,9 +16,7 @@ test.describe("Doing log out and validate that the user isnt connecting", () => 
     page = await browser.getPage(config.Pages_url.BASE_URL)
 })
 
-
   test("Click on log out button from the account page and verify loging out by checking the loging btn", async () => {
-    test.skip()
     const homepage = new HomePage(page);
     await homepage.clickOnProfileUserBtnFromHeader()
     const useraccount = new userAccount(page)

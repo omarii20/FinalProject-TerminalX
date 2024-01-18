@@ -4,7 +4,8 @@
 Welcome to the TerminalX test project! In this project, we will be conducting comprehensive testing for the Terminal X website (https://www.terminalx.com/). Our focus will be on writing a detailed test plan, developing an automation infrastructure, and implementing various types of tests using Playwright.
 
 ### Getting Started
-Before running the tests, make sure you have the necessary dependencies installed. Run the following command to install the required packages: `npm install`
+> [!note]  
+> Before running the tests, make sure you have the necessary dependencies installed. Run the following command to install the required packages: `npm install`
 
 ### Test Plan
 - Login and logout process
@@ -19,8 +20,7 @@ Prepare test data to cover a range of scenarios, including validate the function
 chosen Playwright as our automation tool for this project due to its cross-browser capabilities and easy integration with various testing frameworks.
 
 ### How to Run Tests
-> [!note]  
-> To run the tests, use the following commands:
+To run the tests, use the following commands:
 - For regular test execution: `npx playwright test --reporter=allure-playwright`
 - For HTML debug output: `npx playwright test`
 

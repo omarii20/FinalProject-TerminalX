@@ -18,8 +18,11 @@ export class HomePage extends BasePage {
     await this.header.clickOnCartListBtn();
   }
 
-  async validateItemIsAdded(): Promise<number> {
-    return await this.popupListItems.validateItemInList();
+  async validateItemIsAdded(): Promise<boolean> {
+    if(await this.popupListItems.getNumberOfItem()>0){
+      return true
+    }
+    return false
   }
 
   async clicOnSearchHeaderBtn() {

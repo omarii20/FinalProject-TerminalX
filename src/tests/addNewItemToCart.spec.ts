@@ -33,19 +33,12 @@ test.describe('Cart functionallity tests', () => {
     test('Add item via api', async () => {
         //Arange
         const apiCallls = new ApiCall()
-        const quantity = 1
-        const skuId = "W20253000104"
-
+        const data =  buildCartItemRequest("W20253000104", 1)
         //Act
-        const data =  buildCartItemRequest(skuId, quantity)
         await apiCallls.addItemToCart(data)
-        await page.reload()
-        await page.waitForLoadState('networkidle')
         await homepage.clickOnCartHeaderBtn()
-        const validateItemIsAdded = await homepage.validateItemIsAdded()
-
         //Assert
-        expect(validateItemIsAdded).toBeGreaterThan(0);
+        expect(await homepage.validateItemIsAdded()).toBeGreaterThan(0);
     });
 
     test.afterEach(async()=>{

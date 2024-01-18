@@ -11,7 +11,7 @@ export class CheckOutCartList extends BasePage{
         this.initPage();
     }
 
-    validateItemInList = async (): Promise<number> => {
+    getNumberOfItem = async (): Promise<number> => {
         await this.page.waitForSelector('//div[@class="cart-items-list_wmqo"]/div')
         const result = await this.cartList.count();
         return result

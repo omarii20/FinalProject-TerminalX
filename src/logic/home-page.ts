@@ -25,10 +25,6 @@ export class HomePage extends BasePage {
     return await this.popupListItems.validateItemInList();
   }
 
-  async checkOutListEmpty(): Promise<string> {
-    return await this.popupListItems.checkoutCart();
-  }
-
   async clicOnSearchHeaderBtn() {
     await this.header.clickOnSearchIcon();
   }

@@ -15,10 +15,4 @@ export class PopUpCartList extends BasePage{
         const result = await this.cartList.count();
         return result
     }
-
-    checkoutCart = async (): Promise<string> => {
-        const result = (await this.page.waitForSelector('//div/p[contains(text(), "סל הקניות שלך ריק.")]')).innerText()
-        return result
-    }
-
 }

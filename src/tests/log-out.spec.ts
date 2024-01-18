@@ -24,4 +24,7 @@ test.describe("Doing log out and validate that the user isnt connecting", () => 
     expect(await homepage.getLoginButtonTextFromHeader()).toContain("התחברות")
   });
 
+  test.afterEach(async()=>{
+      browser.closeBrowser();
+  })
 });

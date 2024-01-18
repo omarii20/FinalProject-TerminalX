@@ -43,4 +43,8 @@ test.describe("search about item verify results", () => {
       })
   }
 
+  test.afterEach(async()=>{
+    browser.closeBrowser();
+  })
+
 })

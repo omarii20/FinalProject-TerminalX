@@ -13,13 +13,14 @@ test.describe('Add new item to the wishlist', () => {
     let addProductsToWishlistResponse:Response<WishlistResponse>
     let apiCalls:ApiCall
     let items:WishlistItem
+    let browser: BrowserWrapper;
 
 test('Add item to wishlist', async () => {
     const data= setWishListItem(["W139512901"],["93"],["19554"]);
     apiCalls = new ApiCall();
     addProductsToWishlistResponse = await apiCalls.addItemToWishlist(data);
     items = addProductsToWishlistResponse.data.data.addProductsToWishlist.anyWishlist.items[0];
-    const browser=new BrowserWrapper();
+    browser=new BrowserWrapper();
     const page= await browser.getPage(config.Pages_url.wishListUrl);
     const wishlist= new Wishlist(page);
     await expect( wishlist.getItemTitleLocator(items.product.sku,items.product.defaultColorValueIndex) ).toBeVisible();
@@ -28,5 +29,6 @@ test('Add item to wishlist', async () => {
     test.afterEach(async()=>{
         const itemToRemove=setWishListRemovedItem(items.id);
         await apiCalls.removeFromWishlist(itemToRemove);
+        browser.closeBrowser();
     })
 })

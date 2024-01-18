@@ -11,21 +11,23 @@ import { setRemoveAddress } from '../logic/api/requestBody/delete-address-reques
 test.describe('Add new address', () => {
     let addAdressResponse:Response<CreateAddressResponse>;
     let apiCalls:ApiCall;
+    let browser: BrowserWrapper;
 
-test('Add new address', async () => {
-    const data= setAddressRequest("abeer","kmirat","22","0523055874","חיפה","IL",["שדה בוקר","11",""]);
-    apiCalls = new ApiCall();
-    addAdressResponse = await apiCalls.addNewAddress(data);
-    const browser=new BrowserWrapper();
-    const page= await browser.getPage(config.Pages_url.addressPage);
-    const addressPage=new AddressPage(page);
-    const checkAddressExist=await addressPage.checkAddressValuesMatch("abeer","kmirat","22","0523055874","חיפה",["שדה בוקר"," 11"])
-    expect(checkAddressExist).toBeTruthy();
-});
+    test('Add new address', async () => {
+        const data= setAddressRequest("abeer","kmirat","22","0523055874","חיפה","IL",["שדה בוקר","11",""]);
+        apiCalls = new ApiCall();
+        addAdressResponse = await apiCalls.addNewAddress(data);
+        browser=new BrowserWrapper();
+        const page= await browser.getPage(config.Pages_url.addressPage);
+        const addressPage=new AddressPage(page);
+        const checkAddressExist=await addressPage.checkAddressValuesMatch("abeer","kmirat","22","0523055874","חיפה",["שדה בוקר"," 11"])
+        expect(checkAddressExist).toBeTruthy();
+    });
 
-test.afterEach(async()=>{
-    const id=addAdressResponse.data.data.createCustomerAddress.id;
-    const itemToRemove=setRemoveAddress(id);
-    await apiCalls.removeAddress(itemToRemove);
-})
+    test.afterEach(async()=>{
+        const id=addAdressResponse.data.data.createCustomerAddress.id;
+        const itemToRemove=setRemoveAddress(id);
+        await apiCalls.removeAddress(itemToRemove);
+        browser.closeBrowser();
+    })
 });

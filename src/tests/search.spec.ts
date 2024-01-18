@@ -35,5 +35,8 @@ test.describe("Search about specific brand and verify results", () => {
   test("Search about a brand and validate the result title text", async () => {
     expect(await searchpage.isResultTitleContainBrandName("ADIDAS")).toBeTruthy()
   });
-
+  
+  test.afterEach(async()=>{
+      browser.closeBrowser();
+  })
 });

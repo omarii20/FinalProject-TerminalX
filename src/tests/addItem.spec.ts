@@ -47,4 +47,8 @@ test.describe('Cart functionallity tests', () => {
         //Assert
         expect(validateItemIsAdded).toBeGreaterThan(0);
     });
+
+    test.afterEach(async()=>{
+        browser.closeBrowser();
+    })
 });

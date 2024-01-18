@@ -1,4 +1,4 @@
-import { apiPostMethod } from "../../infra/apiPostMethod";
+import { apiPostMethod } from "../../infra/api/apiMethods";
 import { CartRequest } from "./requestBody/addItem-request";
 import { AddItemResponse } from "./responseBody/addItem-response"
 import { requestUrls } from "../../../apiUrls.json";

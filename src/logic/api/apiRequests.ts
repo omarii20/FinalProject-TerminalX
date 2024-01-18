@@ -20,33 +20,34 @@ import { DeleteCustomerAddressResponse } from "./responseBody/deleteAddress-resp
 
 export class ApiCall{
     addItemToCart = async (data: CartRequest): Promise<Response<AddItemResponse>> => {
-        return await apiPostMethod(requestUrls.addItemToCart, data);
+        return await apiPostMethod<AddItemResponse>(requestUrls.addItemToCart, data);
     };
     
     loginApi = async (data: LoginCredentials, request: APIRequestContext): Promise<Response<LoginResponse>> => {
-        return await apiPostMethod(requestUrls.loginViaApi, data, request);
+        return await apiPostMethod<LoginResponse>(requestUrls.loginViaApi, data, request);
     };
 
     addItemToWishlist=async (data:WishListItem):Promise<Response<WishlistResponse>> =>{
-        return await apiPostMethod(requestUrls.addItemToWishlist,data);
+        return await apiPostMethod<WishlistResponse>(requestUrls.addItemToWishlist,data);
     };
 
     removeFromWishlist=async (data:WishListRemovedItem):Promise<Response<WishlistResponse>> =>{
-        return await apiPostMethod(requestUrls.deleteFromWishlist,data);
+        return await apiPostMethod<WishlistResponse>(requestUrls.deleteFromWishlist,data);
     }
     
     currentUserInfo = async (data: CartObject): Promise<Response<UserInfoResponse>> => {
-        return await apiPostMethod(requestUrls.getUserInfo, data);
+        return await apiPostMethod<UserInfoResponse>(requestUrls.getUserInfo, data);
     }
 
     deleteItemFromCart = async (data: CartDeleteItem): Promise<Response<DeleteItemResponse>> => {
-        return await apiPostMethod(requestUrls.deleteItemFromCart, data);
+        return await apiPostMethod<DeleteItemResponse>(requestUrls.deleteItemFromCart, data);
     }
 
     addNewAddress = async (data: AddressRequest): Promise<Response<CreateAddressResponse>> => {
-        return await apiPostMethod(requestUrls.addNewAddress, data);
+        return await apiPostMethod<CreateAddressResponse>(requestUrls.addNewAddress, data);
     }
+    
     removeAddress=async (data: RemoveAddress):Promise<Response<DeleteCustomerAddressResponse>> => {
-        return await apiPostMethod(requestUrls.deleteAddress, data);
+        return await apiPostMethod<DeleteCustomerAddressResponse>(requestUrls.deleteAddress, data);
     }
 }

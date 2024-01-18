@@ -18,8 +18,8 @@ export class HomePage extends BasePage {
     await this.header.clickOnCartListBtn();
   }
 
-  async validateItemIsAdded(): Promise<number> {
-    return await this.popupListItems.validateItemInList();
+  async getItemCountFromCheckoutList(): Promise<number> {
+    return await this.popupListItems.getNumberOfItem();
   }
 
   async clicOnSearchHeaderBtn() {

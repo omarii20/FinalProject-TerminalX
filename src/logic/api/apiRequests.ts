@@ -46,6 +46,7 @@ export class ApiCall{
     addNewAddress = async (data: AddressRequest): Promise<Response<CreateAddressResponse>> => {
         return await apiPostMethod<CreateAddressResponse>(requestUrls.addNewAddress, data);
     }
+    
     removeAddress=async (data: RemoveAddress):Promise<Response<DeleteCustomerAddressResponse>> => {
         return await apiPostMethod<DeleteCustomerAddressResponse>(requestUrls.deleteAddress, data);
     }

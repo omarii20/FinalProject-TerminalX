@@ -8,6 +8,7 @@
         "ON_SALE_URL":"https://www.terminalx.com/on-sale",   
         "wishListUrl":"https://www.terminalx.com/wishlist/items",
         "addressPage":"https://www.terminalx.com/customer/address/?limit=10"
+        "listCartUrl": "https://www.terminalx.com/checkout/cart"
     }
 
 }

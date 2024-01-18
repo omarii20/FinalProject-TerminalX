@@ -8,10 +8,11 @@ import { Response } from "../logic/api/responseBody/responseFromApi";
 import { setWishListRemovedItem } from '../logic/api/requestBody/remove-from-wishlist-request';
 import { Wishlist } from '../logic/wishlist-page';
 
+
 test.describe('Add new item to the wishlist', () => {
-    let addProductsToWishlistResponse:Response<WishlistResponse>;
-    let apiCalls:ApiCall;
-    let items:WishlistItem;
+    let addProductsToWishlistResponse:Response<WishlistResponse>
+    let apiCalls:ApiCall
+    let items:WishlistItem
 
 test('Add item to wishlist', async () => {
     const data= setWishListItem(["W139512901"],["93"],["19554"]);
@@ -24,8 +25,8 @@ test('Add item to wishlist', async () => {
     await expect( wishlist.getItemTitleLocator(items.product.sku,items.product.defaultColorValueIndex) ).toBeVisible();
 });
 
-test.afterEach(async()=>{
-    const itemToRemove=setWishListRemovedItem(items.id);
-    await apiCalls.removeFromWishlist(itemToRemove);
+    test.afterEach(async()=>{
+        const itemToRemove=setWishListRemovedItem(items.id);
+        await apiCalls.removeFromWishlist(itemToRemove);
+    })
 })
-});

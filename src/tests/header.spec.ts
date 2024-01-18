@@ -1,7 +1,7 @@
-import { test, expect, Page } from "playwright/test";
-import { BrowserWrapper } from "../infra/browser-wrapper";
-import config from "../../config.json";
-import { HomePage } from "../logic/home-page";
+import { test, expect, Page } from "playwright/test"
+import { BrowserWrapper } from "../infra/browser-wrapper"
+import config from "../../config.json"
+import { HomePage } from "../logic/home-page"
 
 test.describe("search about item verify results", () => {
   let page: Page;
@@ -9,13 +9,13 @@ test.describe("search about item verify results", () => {
   let homepage: HomePage
 
   test.beforeAll(async () => {
-    browser = new BrowserWrapper();
+    browser = new BrowserWrapper()
   });
 
   test.beforeEach(async () => {
-    page = await browser.getPage(config.Pages_url.BASE_URL);
-    homepage = new HomePage(page);
-  });
+    page = await browser.getPage(config.Pages_url.BASE_URL)
+    homepage = new HomePage(page)
+  })
 
   const header = [
     { name: "ON SALE", url: config.Pages_url.ON_SALE_URL},
@@ -36,11 +36,11 @@ test.describe("search about item verify results", () => {
                   await homepage.clickOnMutagimFromHeader()
                   break;
               default:
-                  console.error("Illegal Input!");
+                  console.error("Illegal Input!")
                   break;
           }
-          await expect(await browser.getCurrentPage()).toHaveURL(btn.url);
-      });
+          await expect(await browser.getCurrentPage()).toHaveURL(btn.url)
+      })
   }
 
-});
+})

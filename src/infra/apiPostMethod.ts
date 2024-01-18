@@ -1,5 +1,5 @@
 import { APIRequestContext, request } from "playwright";
-import { Response } from "../logic/api/resonseBody/responseFromApi";
+import { Response } from "../logic/api/responseBody/responseFromApi";
 
 export const apiPostMethod = async <T>(url: string, data?: any, req?: APIRequestContext): Promise<Response<T>> => {
     const currentContext = req || await request.newContext();
